@@ -200,7 +200,13 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    var top='',bottom='',middle='',char1='─',char2=' ',char3='│';
+
+    if(width < 2 || height < 2) return false;
+    top='┌'+char1.repeat(width-2)+'┐'+'\n';
+    middle=char3+char2.repeat(width-2)+char3+'\n';
+    bottom='└'+char1.repeat(width-2)+'┘'+'\n';
+    return top+middle.repeat(height-2)+bottom;
 }
 
 
@@ -220,7 +226,7 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+    return str.toString(ROT13);
 }
 
 /* *
