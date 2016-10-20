@@ -231,12 +231,12 @@ function encodeToRot13(str) {
         arr[i] = str.charCodeAt(i);
         if ((arr[i]>=A && arr[i]<=M) || (arr[i]>=a && arr[i]<= m)){
         arr[i]+=13;
-        }
+}
         else if ((arr[i]>=N && arr[i]<=Z) || (arr[i]>=n && arr[i]<=z)){
         arr[i]-=13;
-        }
+}
         strRot13+=String.fromCharCode(arr[i]);
-    }
+}
     return(strRot13);
 }
 
@@ -254,7 +254,10 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if (typeof (value) == "string" || value instanceof String){
+    return (true)
+}
+    else return (false)
 }
 
 
