@@ -226,7 +226,18 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    return str.toString(ROT13);
+    var strRot13='', arr=[], A=65, M=77, a=97, m=109, N=78, Z=90, n=110, z=122;
+    for (var i=0; i<str.length; i++){
+        arr[i] = str.charCodeAt(i);
+        if ((arr[i]>=A && arr[i]<=M) || (arr[i]>=a && arr[i]<= m)){
+        arr[i]+=13;
+        }
+        else if ((arr[i]>=N && arr[i]<=Z) || (arr[i]>=n && arr[i]<=z)){
+        arr[i]-=13;
+        }
+        strRot13+=String.fromCharCode(arr[i]);
+    }
+    return(strRot13);
 }
 
 /* *
