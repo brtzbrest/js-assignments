@@ -202,7 +202,6 @@ function extractEmails(str) {
 function getRectangleString(width, height) {
     var top='',bottom='',middle='',char1='─',char2=' ',char3='│';
 
-    if(width < 2 || height < 2) return false;
     top='┌'+char1.repeat(width-2)+'┐'+'\n';
     middle=char3+char2.repeat(width-2)+char3+'\n';
     bottom='└'+char1.repeat(width-2)+'┘'+'\n';
@@ -226,7 +225,7 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    var strRot13='', arr=[], A=65, M=77, a=97, m=109, N=78, Z=90, n=110, z=122;
+     var strRot13='', arr=[], A=65, M=77, a=97, m=109, N=78, Z=90, n=110, z=122;
     for (var i=0; i<str.length; i++){
     arr[i] = str.charCodeAt(i);
         if ((arr[i]>=A && arr[i]<=M) || (arr[i]>=a && arr[i]<= m)){
@@ -238,6 +237,7 @@ function encodeToRot13(str) {
     strRot13+=String.fromCharCode(arr[i]);
 }
     return(strRot13);
+    
 }
 
 /* *
@@ -286,7 +286,10 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    var suit  = ['♣', '♦', '♥', '♠'];
+    var num = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    value = suit.indexOf(value.charAt(value.length-1))*13 + num.indexOf(value.charAt(0));
+    return (value);
 }
 
 
