@@ -225,11 +225,6 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    return this.replace(/[a-zA-Z]/g, function(r13){return String.fromCharCode((r13 <= "Z" ? 90 : 122) >= (r13 = r13.charCodeAt(0) + 13) ? r13 : r13 - 26);});
-}
-
-
-/* {
  var strRot13='', arr=[], A=65, M=77, a=97, m=109, N=78, Z=90, n=110, z=122;
  for (var i=0; i<str.length; i++){
  arr[i] = str.charCodeAt(i);
@@ -243,7 +238,7 @@ function encodeToRot13(str) {
  }
  return(strRot13);
  }
- */
+
 
 /* *
  * Returns true if the value is string; otherwise false.
@@ -292,7 +287,7 @@ function isString(value) {
  */
 function getCardId(value) {
     var suit  = ['♣', '♦', '♥', '♠'];
-    var num = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    var num = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '1', 'J', 'Q', 'K'];
     value = suit.indexOf(value.charAt(value.length-1))*13 + num.indexOf(value.charAt(0));
     return (value);
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-/********************************************************************************************
+/* *******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates          *
@@ -10,7 +10,7 @@
  ********************************************************************************************/
 
 
-/**
+/* *
  * Returns an area of a rectangle given by width and heigth.
  *
  * @param {numder} width
@@ -22,11 +22,11 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-    throw new Error('Not implemented');
+    return width * height;
 }
 
 
-/**
+/* *
  * Returns a circumference of circle given by radius.
  *
  * @param {number} radius
@@ -41,7 +41,7 @@ function getCicleCircumference(radius) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Returns an average of two given numbers.
  *
  * @param {numder} value1
@@ -57,7 +57,7 @@ function getAverage(value1, value2) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Returns a distance beetween two points by cartesian coordinates.
  *
  * @param {number} x1
@@ -76,7 +76,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
  *
  * @param {number} a
@@ -93,7 +93,7 @@ function getLinearEquationRoot(a, b) {
 }
 
 
-/**
+/* *
  * Returns an angle (in radians) between two vectors given by xi and yi, coordinates in Cartesian plane
  * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
  *
@@ -114,7 +114,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Returns a last digit of a integer number.
  *
  * @param {number} value
@@ -131,7 +131,7 @@ function getLastDigit(value) {
 }
 
 
-/**
+/* *
  * Returns a number by given string representation.
  *
  * @param {string} value
@@ -146,7 +146,7 @@ function parseNumberFromString(value) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
  *
  * @param {number} a
@@ -163,7 +163,7 @@ function getParallelipidedDiagonal(a,b,c) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Returns the number rounded to specified power of 10.
  *
  * @param {number} num
@@ -184,7 +184,7 @@ function roundToPowerOfTen(num, pow) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Returns true is the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
@@ -205,7 +205,7 @@ function isPrime(n) {
     throw new Error('Not implemented');
 }
 
-/**
+/* *
  * Tries to convert value to number and returns it if conversion was successfull;
  * otherwise returns default value passed as a second argument.
  *
