@@ -77,7 +77,26 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-   throw new Error('Not implemented');
+    var hour = (endDate.getHours()-startDate.getHours()).toString();
+    var minute = (endDate.getMinutes()-startDate.getMinutes()).toString();
+    var sec = (endDate.getSeconds()-startDate.getSeconds()).toString();
+    var ms = (endDate.getMilliseconds()-startDate.getMilliseconds()).toString();
+    if(Number(hour)<10 && Number(hour)>=0){
+        hour='0'+hour;
+    }
+    if(Number(minute)<10 && Number(minute)>=0){
+        minute='0'+minute;
+    }
+    if(Number(sec)<10 && Number(sec)>=0){
+        sec='0'+sec;
+    }
+    if(Number(ms)<10 && Number(ms)>=0){
+        ms='00'+ms;
+    }
+    else if(Number(ms)<100 && Number(ms)>=10){
+        ms='0'+ms;
+    }
+    return hour + ':' + minute + ':' + sec + '.' + mil;
 }
 
 
@@ -95,8 +114,22 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+var d = new Date(date);
+var hour = d.getHours();
+var minutes = d.getMinutes();
+if (hour > 12) {
+    hour -= 12;
 }
+var degreehour = 0.5*(60*hour+minutes);
+var degreeminutes = 6*minutes;
+var degree = degreehour-degreeminutes;
+if (degree > 180) {
+    degree = Math.abs(360-degree);}
+var rads = Math.PI/180*degree;
+return rads;
+}
+
+
 
 
 module.exports = {
