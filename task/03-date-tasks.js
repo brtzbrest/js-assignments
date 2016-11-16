@@ -97,18 +97,11 @@ return d;
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-var hour = date.getUTCHours;
-var minutes = date.getUTCMinutes;
-if (hour => 12 ) {
-    hour = hour - 12;
+var hour = date.getUTCHours() > 13 ? date.getUTCHours() - 12 : date.getUTCHours();
+var minutes = date.getMinutes();
+var degree = Math.abs(((hour * 30) + (minutes * 0.5)) - (minutes * 6));
+return Math.PI * Math.min(degree, 360 - degree) / 180;
 }
-var degree = Math.abs((hour * 60 + minutes - minutes * 12) / 2)%360;
- if (degree => 180) {
-    degree = 360 - degree;
- }
-var rads = degree / 180 * Math.PI;
- return rads;
- }
 
 
 
