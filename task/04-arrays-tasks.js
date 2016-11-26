@@ -38,7 +38,7 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-   return Array.from({length: len}, (val, i) => i * 2 + 1);
+   return Array.from({length: len}, (v, i) => i * 2 + 1);
 }
 
 
@@ -271,7 +271,7 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce((prev, curr, index) => prev.concat(Array(index + 1).fill(curr)), []);
 }
 
 
@@ -289,7 +289,7 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   return arr.sort((a, b) => b - a).slice(0, 3);
 }
  
  
@@ -306,7 +306,7 @@ function get3TopItems(arr) {
  *   [ null, 1, 'elephant' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce((prev, curr) => curr > 0 ? prev + 1 : prev, 0);
 }
  
 /* * 
@@ -323,7 +323,8 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented');
+   let digit = 'zero one two three four five six seven eight nine';
+    return arr.sort((a, b) => digit.indexOf(a) - digit.indexOf(b));
 }
 
 /* * 
@@ -339,7 +340,7 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce((prev, curr) => prev + curr, 0);
 }
  
 /* * 
@@ -355,7 +356,7 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce((prev, curr) => prev + (curr ? 0 : 1), 0);
 }
 
 /* *
@@ -373,7 +374,7 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   return arr.reduce((prev, curr) => prev + (curr === item ? 1 : 0), 0);
 }
 
 /* *
@@ -388,7 +389,7 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   return arr.toString();
 }
 
 
@@ -439,7 +440,7 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+   return Array.from({length: n}, (v, i) => Array.from({length: n},(v, j) => j === i ? 1 : 0));
 }
 
 /* *
@@ -456,7 +457,7 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+  return Array.from({length: end - start + 1}, (v, i) => start + i);;
 }
 
 /* *
@@ -471,7 +472,7 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   return Array.from(new Set(arr));
 }
 
 /* *
@@ -505,7 +506,7 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   throw new Error('Not implemented');
+  throw new Error('Not implemented');
 }
 
 
@@ -521,7 +522,7 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+    return arr.reduce((prev, curr) => prev.concat(childrenSelector(curr)), []);
 }
 
 
@@ -538,7 +539,7 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    throw new Error('Not implemented');
+    return indexes.reduce((prev, curr) => prev[curr], arr);
 }
 
 
@@ -563,7 +564,6 @@ function getElementByIndexes(arr, indexes) {
 function swapHeadAndTail(arr) {
     throw new Error('Not implemented');
 }
-
 
 module.exports = {
     findElement: findElement,
