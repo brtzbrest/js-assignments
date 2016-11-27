@@ -418,7 +418,7 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
+   return arr.sort((a, b) => ((a.country > b.country)-(a.country < b.country)) || ((a.city > b.city)-(a.city < b.city)));
 }
 
 /* *
@@ -506,7 +506,15 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-  throw new Error('Not implemented');
+  return array.reduce((prev, curr) => {
+        let key = keySelector(curr);
+        let value = valueSelector(curr);
+        let arr = prev.get(key) || [];
+        arr.push(value);
+        prev.set(key, arr);
+        return prev;
+    }, 
+  new Map);
 }
 
 
@@ -562,7 +570,10 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+    let l = arr.length/2;
+    let tail = arr.splice(-l,l).concat(arr);
+    let head = tail.concat(tail.splice(l,l));
+    return head;
 }
 
 module.exports = {
