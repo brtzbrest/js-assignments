@@ -8,7 +8,7 @@
  ********************************************************************************************/
 
 
-/**
+/* *
  * Returns the regexp that matches a GUID string representation
  * '{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}',
  * where X is hexadecimal digit (0,1,2...,9,A,a,B,b,C,c,D,d,F,f)
@@ -31,11 +31,12 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-   throw new Error('Not implemented');
+   let s = '[\\da-fA-F]';
+    return new RegExp(`^\\{${s}{8}-${s}{4}-${s}{4}-${s}{4}-${s}{12}\\}$`, 'i');
 }
 
 
-/**
+/* *
  * Returns the regexp that matches all the strings from first column
  * but of them from the second
  *
@@ -53,11 +54,11 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-   throw new Error('Not implemented');
+   return /p.t/;
 }
 
 
-/**
+/* *
  * Returns the regexp that matches all IPv4 strings in
  * 'XX.XX.XX.XX' dotted format where XX is number 0 to 255
  *
@@ -72,11 +73,12 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
-   throw new Error('Not implemented');
+   let s = '(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})';
+    return new RegExp(`^${s}\\.${s}\\.${s}\\.${s}$`);
 }
 
 
-/**
+/* *
  * Returns the regexp that matches all SSN (Social Security Number) codes in
  * 'XXX-XX-XXXX' format where X is digit, where each group can't be all zeros
  * https://en.wikipedia.org/wiki/Social_Security_number
@@ -91,11 +93,12 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-   throw new Error('Not implemented');
+   let s = '(?=0*[1-9]+0*)\\d';
+    return new RegExp(`${s}{3}-${s}{2}-${s}{4}`);
 }
 
 
-/**
+/* *
  * Returns the password validator regex.
  * Regex will validate a password to make sure it meets the follwing criteria:
  *  - At least specified characters long (argument minLength)
@@ -116,7 +119,8 @@ function getRegexForSSN() {
  *   'Pa55'.match(validator) => false
  */
 function getPasswordValidator(minLength) {
-   throw new Error('Not implemented');
+   let s = '[A-Za-z0-9]';
+    return new RegExp(`^(?=${s}*[a-z])(?=${s}*[A-Z])(?=${s}*\\d)${s}{${minLength},}$`);
 }
 
 

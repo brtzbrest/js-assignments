@@ -9,7 +9,7 @@
  ********************************************************************************************/
 
 
-/**
+/* *
  * Returns the lines sequence of "99 Bottles of Beer" song:
  *
  *  '99 bottles of beer on the wall, 99 bottles of beer.'
@@ -33,11 +33,26 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+    let index = 99,
+        line = true;
+    while (index > 0) {
+        if (line)
+            yield `${index} bottle${index > 1 ? 's' : ''} of beer on the wall, ${index} bottle${index > 1 ? 's' : ''} of beer.`;
+        else {
+            --index;
+            if (index)
+                yield `Take one down and pass it around, ${index} bottle${index > 1 ? 's' : ''} of beer on the wall.`;
+            else
+                yield 'Take one down and pass it around, no more bottles of beer on the wall.';
+        }
+        line = !line;
+    }
+    yield 'No more bottles of beer on the wall, no more bottles of beer.';
+    yield 'Go to the store and buy some more, 99 bottles of beer on the wall.';
 }
 
 
-/**
+/* *
  * Returns the Fibonacci sequence:
  *   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ...
  *
@@ -47,11 +62,18 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+    let x1 = 0;
+    let x2 = 1; 
+    while (true) {
+        let x = x1;
+        x1 = x2;
+        x2 = x1 + x;
+        yield x;
+    }
 }
 
 
-/**
+/* *
  * Traverses a tree using the depth-first strategy
  * See details: https://en.wikipedia.org/wiki/Depth-first_search
  *
@@ -82,11 +104,18 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
+    const stack = [root];
+    while (stack.length > 0) {
+        root = stack.pop();
+        yield root;
+        if (typeof root.children !== 'undefined')
+            for (let value of root.children.reverse())
+                stack.push(value);
+    }
 }
 
 
-/**
+/* *
  * Traverses a tree using the breadth-first strategy
  * See details: https://en.wikipedia.org/wiki/Breadth-first_search
  *
@@ -108,11 +137,18 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-    throw new Error('Not implemented');
+    const queue = [root];
+    while (queue.length > 0) {
+        root = queue.shift();
+        yield root;
+        if (typeof root.children !== 'undefined')
+            for (let value of root.children)
+                queue.push(value);
+    }
 }
 
 
-/**
+/* *
  * Merges two yield-style sorted sequences into the one sorted sequence.
  * The result sequence consists of sorted items from source iterators.
  *
@@ -126,7 +162,19 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+    let src1 = source1();
+    let src2 = source2();
+    let val1 = src1.next().value;
+    let val2 = src2.next().value;
+    while (true)
+        if ((val1 < val2 || val2 === undefined) && val1 !== undefined) {
+            yield val1;
+            val1 = src1.next().value;
+        } else if (val2 !== undefined) {
+            yield val2;
+            val2 = src2.next().value;
+        } else
+            break;
 }
 
 
