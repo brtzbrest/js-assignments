@@ -137,14 +137,16 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-    const queue = [root];
-    while (queue.length > 0) {
-        root = queue.shift();
-        yield root;
-        if (typeof root.children !== 'undefined')
-            for (let value of root.children)
-                queue.push(value);
+    let source = [root];
+    for (let node of source) {
+        yield node;
+        if (node.children) {
+            for(let child of node.children) {
+                source.push(child);
+            }
+        }
     }
+
 }
 
 

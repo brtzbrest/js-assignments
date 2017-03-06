@@ -381,30 +381,30 @@ function isBracketsBalanced(str) {
 function timespanToHumanString(startDate, endDate) {
     let diff = endDate.getTime() - startDate.getTime(),
         sec = 1000, 
-        min = s * 60, 
-        hour = m * 60, 
-        day = h * 24; 
+        min = sec * 60, 
+        hour = min * 60, 
+        day = hour * 24; 
     if (diff <= 45 * sec)
         return 'a few seconds ago';
     if (diff <= 90 * sec)
         return 'a minute ago';
     if (diff <= 45 * min)
-        return `${Math.round((diff - 1) / m)} minutes ago`;
+        return `${Math.round((diff - 1) / min)} minutes ago`;
     if (diff <= 90 * min)
         return 'an hour ago';
     if (diff <= 22 * hour)
-        return `${Math.round((diff - 1) / h)} hours ago`;
+        return `${Math.round((diff - 1) / hour)} hours ago`;
     if (diff <= 36 * hour)
         return 'a day ago';
     if (diff <= 25 * day)
-        return `${Math.round((diff - 1) / d)} days ago`;
+        return `${Math.round((diff - 1) / day)} days ago`;
     if (diff <= 45 * day)
         return 'a month ago';
     if (diff <= 345 * day)
-        return `${Math.round(diff / 30 / d)} months ago`;
+        return `${Math.round(diff / 30 / day)} months ago`;
     if (diff <= 545 * day)
         return 'a year ago';
-    return `${Math.round(diff / 365 / d)} years ago`;
+    return `${Math.round(diff / 365 / day)} years ago`;
 }
 
 
@@ -481,12 +481,12 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    let result = [];
-    for (let i = 0; i < m1.length; i++) {
+    var result = [];
+    for (var i = 0; i < m1.length; i++) {
         result[i] = [];
-        for (let j = 0; j < m2[i].length; j++) {
+        for (var j = 0; j < m2[i].length; j++) {
             result[i][j] = 0;
-            for (let t = 0; t < m1[i].length; t++)
+            for (var t = 0; t < m1[i].length; t++)
                 result[i][j] += m1[i][t] * m2[t][j];
         }
     }
