@@ -481,12 +481,12 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    var result = [];
-    for (var i = 0; i < m1.length; i++) {
+    let result = [];
+    for (let i = 0; i < m1.length; i++) {
         result[i] = [];
-        for (var j = 0; j < m2[i].length; j++) {
+        for (let j = 0; j < m2[i].length; j++) {
             result[i][j] = 0;
-            for (var t = 0; t < m1[i].length; t++)
+            for (let t = 0; t < m1[i].length; t++)
                 result[i][j] += m1[i][t] * m2[t][j];
         }
     }
