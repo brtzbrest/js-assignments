@@ -23,13 +23,15 @@ function createCompassPoints() {
         let compassPoint = { abbreviation : 'none',   azimuth : x };
         let coord = x/11.25;
         let position = coord%8;
+        //console.log(position);
         
             coord = Math.floor(coord/8);
-
+            //console.log(coord);
         let value = sides[coord];
         let value1 = sides[(coord+1)%4];
-        let value2 = (value===sides[0] || value===sides[2]) ? value+value1 : value1+value;
-
+        //console.log(value1);
+        let value2 = (value==sides[0] || value==sides[2]) ? value+value1 : value1+value;
+        //console.log(value2);
         switch (position){
             case 0: compassPoint.abbreviation = value;
                 break;
@@ -91,8 +93,22 @@ function createCompassPoints() {
  *   'nothing to do' => 'nothing to do'
  */
 function* expandBraces(str) {
-    throw new Error('Not implemented');
+    const line = [str];
+    const list = [];
+    while (line.length > 0) {
+        str = line.shift();
+        let match = str.match(/\{([^{}]+)\}/);
+        if (match) {
+            for (let value of match[1].split(','))
+                line.push(str.replace(match[0], value));
+        } 
+        else if (list.indexOf(str) < 0) {
+            list.push(str);
+        yield str;
+        }
+    }
 }
+
 
 
 /**
